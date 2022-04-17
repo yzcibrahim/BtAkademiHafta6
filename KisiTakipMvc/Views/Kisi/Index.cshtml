@@ -1,0 +1,48 @@
+﻿@model List<KisiViewModel>
+    <style>
+        #kisilerTable {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+            #kisilerTable td, #customers th {
+                border: 1px solid #ddd;
+                padding: 8px;
+            }
+
+        #kisilerTable tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        #kisilerTable tr:hover {
+            background-color: #ddd;
+        }
+
+        #kisilerTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #04AA6D;
+            color: white;
+        }
+    </style>
+
+<div>
+    <table id="kisilerTable">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Surname</th>
+        </tr>
+        @foreach (var kisi in Model)
+        {
+        <tr>
+            <td>@kisi.Id</td>
+            <td>@kisi.Name</td>
+            <td>@kisi.Surname</td>
+        </tr>
+        }
+    </table>
+</div>
+
