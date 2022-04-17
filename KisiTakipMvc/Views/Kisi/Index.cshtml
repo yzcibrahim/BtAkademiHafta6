@@ -1,48 +1,96 @@
-﻿@model List<KisiViewModel>
-    <style>
-        #kisilerTable {
-            font-family: Arial, Helvetica, sans-serif;
-            border-collapse: collapse;
-            width: 100%;
-        }
+﻿@model IEnumerable<KisiTakipMvc.Models.KisiViewModel>
 
-            #kisilerTable td, #customers th {
-                border: 1px solid #ddd;
-                padding: 8px;
-            }
+@{
+    ViewData["Title"] = "Index";
+}
 
-        #kisilerTable tr:nth-child(even) {
-            background-color: #f2f2f2;
-        }
+<h1>Index</h1>
 
-        #kisilerTable tr:hover {
-            background-color: #ddd;
-        }
-
-        #kisilerTable th {
-            padding-top: 12px;
-            padding-bottom: 12px;
-            text-align: left;
-            background-color: #04AA6D;
-            color: white;
-        }
-    </style>
-
-<div>
-    <table id="kisilerTable">
+<p>
+    <a asp-action="Create">Yeni Kişi</a>
+</p>
+<table class="table">
+    <thead>
         <tr>
-            <th>Id</th>
-            <th>Name</th>
-            <th>Surname</th>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Surname)
+            </th>
+            <th></th>
         </tr>
-        @foreach (var kisi in Model)
-        {
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
         <tr>
-            <td>@kisi.Id</td>
-            <td>@kisi.Name</td>
-            <td>@kisi.Surname</td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Surname)
+            </td>
+            <td>
+                @Html.ActionLink("Düzenle", "Create", new { id = item.Id }) |
+                @Html.ActionLink("Detaylar", "Details", new { id = item.Id }) |
+                @*<a href="/Kisi/Delete/@item.Id"
+        onclick="return confirmDelete('@item.Name','@item.Surname')"
+        >Sil</a>*@
+                <a href="/Kisi/Delete/@item.Id"
+                   onclick="return ShowModal('@item.Id','@item.Name','@item.Surname')">Sil</a>
+                @* @Html.ActionLink("Sil", "Delete", new {  id=item.Id  })*@
+            </td>
         </tr>
-        }
-    </table>
+}
+    </tbody>
+</table>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+               silmek istediğinizden emin misiniz?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Vazgeç</button>
+                <button type="button" onclick="deleteKisi()" class="btn btn-primary">Sil</button>
+            </div>
+        </div>
+    </div>
 </div>
 
+<script>
+
+    var silinecekId = 0;
+    function deleteKisi() {
+        var url = "/Kisi/Delete/" + silinecekId;
+        console.log(url);
+        window.location.href = url;
+        $('#exampleModal').modal('hide');
+         
+    }
+
+    function ShowModal(id,name, surname) {
+        silinecekId = id;
+        $('#exampleModal').modal('show');
+        return false;
+
+    }
+
+    function confirmDelete(name, surname) {
+        var mes = name + " " + surname + " silinecek emin Misiniz";
+        return confirm(mes);
+    }
+</script>
