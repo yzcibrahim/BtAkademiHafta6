@@ -1,5 +1,7 @@
+﻿using _08_DosyaRepository;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -22,7 +24,17 @@ namespace KisiTakipMvc
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<BtaKisiDbContext>(options =>
+            options.UseSqlServer(Configuration.GetConnectionString("MssqlConnection")));
+
             services.AddControllersWithViews();
+
+            //  services.AddSingleton<IKisiRepository, JsonRepository>();//uygulama çalıştığı sürece tek bir instanceı kullan
+            services.AddScoped<IKisiRepository, EfRepository>();//uygulama çalıştığı sürece tek bir instanceı kullan
+            services.AddTransient<Test, Test>();//ihtiyaç duydukça yeni bir instance üret
+          //  services.AddScoped<IDeneme, Deneme>();//bir request boyunca ihtiyaç duyuldukça aynı insatneceı kullan
+            services.AddScoped<IDeneme, DenemeYeni>();//bir request boyunca ihtiyaç duyuldukça aynı insatneceı kullan
+            services.AddScoped<IDersRepository, DersRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +58,7 @@ namespace KisiTakipMvc
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Kisi}/{action=Index}/{id?}");
             });
         }
     }

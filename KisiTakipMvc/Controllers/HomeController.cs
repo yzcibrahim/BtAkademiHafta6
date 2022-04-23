@@ -1,4 +1,5 @@
-﻿using KisiTakipMvc.Models;
+﻿using _08_DosyaRepository;
+using KisiTakipMvc.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System;
@@ -12,14 +13,20 @@ namespace KisiTakipMvc.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        IKisiRepository _repository;
+        Test _t1;
+        IDeneme _d;
+        public HomeController(ILogger<HomeController> logger, IKisiRepository repository,  Test t1,IDeneme d)
         {
+            _repository = repository;
             _logger = logger;
+            _t1 = t1;
+            _d = d;
         }
 
         public IActionResult Index()
         {
+            
             return View();
         }
 

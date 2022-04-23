@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.32002.261
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KisiTakipMvc", "KisiTakipMvc\KisiTakipMvc.csproj", "{2B2A99FB-6C54-42F9-9A57-451D61574257}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "KisiTakipMvc", "KisiTakipMvc\KisiTakipMvc.csproj", "{2B2A99FB-6C54-42F9-9A57-451D61574257}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "08_DosyaRepository", "08_DosyaRepository\08_DosyaRepository.csproj", "{9956C6CC-0BA4-469D-86A9-FF1D42365B00}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "05_Tipler", "05_Tipler\05_Tipler.csproj", "{C9665542-C83F-4B97-A6CC-E83684356661}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{2B2A99FB-6C54-42F9-9A57-451D61574257}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B2A99FB-6C54-42F9-9A57-451D61574257}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B2A99FB-6C54-42F9-9A57-451D61574257}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9956C6CC-0BA4-469D-86A9-FF1D42365B00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9956C6CC-0BA4-469D-86A9-FF1D42365B00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9956C6CC-0BA4-469D-86A9-FF1D42365B00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9956C6CC-0BA4-469D-86A9-FF1D42365B00}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C9665542-C83F-4B97-A6CC-E83684356661}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C9665542-C83F-4B97-A6CC-E83684356661}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C9665542-C83F-4B97-A6CC-E83684356661}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C9665542-C83F-4B97-A6CC-E83684356661}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

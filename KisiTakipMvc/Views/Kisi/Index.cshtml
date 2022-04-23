@@ -21,6 +21,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.Surname)
             </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Age)
+            </th>
             <th></th>
         </tr>
     </thead>
@@ -37,11 +40,14 @@
                 @Html.DisplayFor(modelItem => item.Surname)
             </td>
             <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
                 @Html.ActionLink("Düzenle", "Create", new { id = item.Id }) |
                 @Html.ActionLink("Detaylar", "Details", new { id = item.Id }) |
                 @*<a href="/Kisi/Delete/@item.Id"
-        onclick="return confirmDelete('@item.Name','@item.Surname')"
-        >Sil</a>*@
+            onclick="return confirmDelete('@item.Name','@item.Surname')"
+            >Sil</a>*@
                 <a href="/Kisi/Delete/@item.Id"
                    onclick="return ShowModal('@item.Id','@item.Name','@item.Surname')">Sil</a>
                 @* @Html.ActionLink("Sil", "Delete", new {  id=item.Id  })*@

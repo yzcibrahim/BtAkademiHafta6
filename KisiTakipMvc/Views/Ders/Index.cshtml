@@ -1,0 +1,29 @@
+﻿@using _05_Tipler
+@model IEnumerable<_05_Tipler.Ders>
+@{
+    ViewData["Title"] = "Index";
+
+    List<Ders> dersler = new List<Ders>();
+    dersler.Add(new Ders() { Id = 100, Ad = "asdasdasd", Kredi = 200 });
+
+}
+
+
+<h1>Burası index sayfası</h1>
+
+<p>
+
+    <partial name="ListDersPartial" model="Model" />
+    <partial name="ListDersPartial" model="dersler" />
+
+</p>
+<div id="testDiv"></div>
+
+@section Scripts{ 
+<script>
+    $(document).ready(function () {
+        $('#testDiv').load("/Ders/ListDersPartial");
+
+    });
+</script>
+}

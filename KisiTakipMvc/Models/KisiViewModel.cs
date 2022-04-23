@@ -16,5 +16,10 @@ namespace KisiTakipMvc.Models
 
         [DisplayName("Soyad")]
         public string Surname { get; set; }
+        [DisplayName("Yaş")]
+        public int Age { get; set; }
+
     }
+
+
 }
